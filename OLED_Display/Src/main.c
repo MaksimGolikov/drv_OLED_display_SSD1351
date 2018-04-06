@@ -190,6 +190,40 @@ Heart.image = heartPicture;
   drv_OLED_Display_DrawImage(0, 0, 128, 128, imageMass);
 
 
+  /*drv_OLED_Display_FillScreen(COLOR_BLACK);
+  drv_OLED_Display_DrawPictire(50, 0,
+		                       10, 10,
+							   Numbers[0], COLOR_WHITE);
+  drv_OLED_Display_DrawPictire(50, 10,
+  		                       10, 10,
+							   Numbers[(1 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 20,
+    		                       10, 10,
+  							   Numbers[(2 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 30,
+    		                       10, 10,
+  							   Numbers[(3 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 40,
+    		                       10, 10,
+  							   Numbers[(4 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 50,
+    		                       10, 10,
+  							   Numbers[(5 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 60,
+    		                       10, 10,
+  							   Numbers[(6 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 70,
+    		                       10, 10,
+  							   Numbers[(7 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 80,
+    		                       10, 10,
+  							   Numbers[(8 * 10)], COLOR_BLUE);
+  drv_OLED_Display_DrawPictire(50, 90,
+    		                       10, 10,
+  							   Numbers[(9 * 10)], COLOR_BLUE);*/
+
+
+
   static uint32_t time = 0;
   static uint8_t x = 0;
   static uint8_t y = 0;
@@ -202,7 +236,7 @@ Heart.image = heartPicture;
     drv_Led_Run();
 
 
-   /* if (drv_SysClock_IsTimeSpent(time, 50)) {
+ /*   if (drv_SysClock_IsTimeSpent(time, 50)) {
 
     	  drv_OLED_Display_DrawPictire(x, y,
     			                       Cross.width, Cross.heigh,
@@ -329,7 +363,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;

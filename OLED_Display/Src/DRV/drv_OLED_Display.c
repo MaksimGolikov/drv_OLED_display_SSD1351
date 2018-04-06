@@ -117,24 +117,9 @@ void drv_OLED_Display_Init(SPI_HandleTypeDef *spi,
 	SendData(0x0F);
 
 	SendCommand(COMMAND_SETGRAY);
-	SendData(0x05);
-	SendData(0x06);
-	SendData(0x07);
-	SendData(0x08);
-	SendData(0x09);
-	SendData(0x0a);
-	SendData(0x0b);
-	SendData(0x0c);
-	SendData(0x0D);
-	SendData(0x0E);
-	SendData(0x0F);
-	SendData(0x10);
-	SendData(0x11);
-	SendData(0x12);
-	SendData(0x13);
-	SendData(0x14);
-	SendData(0x15);
-	SendData(0x16);
+	for(uint8_t i = 5; i < 23; ++i){
+		SendData(i);
+	}
 	SendData(0x18);
 	SendData(0x1a);
 	SendData(0x1b);
@@ -145,42 +130,15 @@ void drv_OLED_Display_Init(SPI_HandleTypeDef *spi,
 	SendData(0x23);
 	SendData(0x25);
 	SendData(0x27);
-	SendData(0x2A);
-	SendData(0x2D);
-	SendData(0x30);
-	SendData(0x33);
-	SendData(0x36);
-	SendData(0x39);
-	SendData(0x3C);
-	SendData(0x3F);
-	SendData(0x42);
-	SendData(0x45);
-	SendData(0x48);
-	SendData(0x4C);
-	SendData(0x50);
-	SendData(0x54);
-	SendData(0x58);
-	SendData(0x5C);
-	SendData(0x60);
-	SendData(0x64);
-	SendData(0x68);
-	SendData(0x6C);
-	SendData(0x70);
-	SendData(0x74);
-	SendData(0x78);
-	SendData(0x7D);
-	SendData(0x82);
-	SendData(0x87);
-	SendData(0x8C);
-	SendData(0x91);
-	SendData(0x96);
-	SendData(0x9B);
-	SendData(0xA0);
-	SendData(0xA5);
-	SendData(0xAA);
-	SendData(0xAF);
-	SendData(0xB4);
-
+	for (uint8_t i = 42; i <= 72; i += 3) {
+		SendData(i);
+	}
+	for (uint8_t i = 76; i <= 120; i += 4) {
+		SendData(i);
+	}
+	for (uint8_t i = 125; i <= 180; i += 5) {
+		SendData(i);
+	}
 
 	SendCommand(COMMAND_PRECHARGE);
 	SendData(0x32);
@@ -288,7 +246,7 @@ void drv_OLED_Display_DrawPixel(uint8_t x, uint8_t y, uint16_t color){
 
 void drv_OLED_Display_DrawPictire(uint8_t x_st,  uint8_t y_st,
 		                          uint8_t width, uint8_t heigh,
-								  uint8_t *ptrPicture, uint16_t color){
+								  uint16_t *ptrPicture, uint16_t color){
 	if ((width > 0) && (heigh > 0)){
 
 		SendCommand(COMMAND_SET_COLUMN);
@@ -302,7 +260,7 @@ void drv_OLED_Display_DrawPictire(uint8_t x_st,  uint8_t y_st,
 		SendCommand(COMMAND_WRITE_RAM);
 		for(uint8_t x = 0; x < width; ++x){
 			for(uint8_t y = 0; y < heigh; ++y){
-				uint8_t dot = *(ptrPicture + (y * width) + x);
+				uint16_t dot = *(ptrPicture + (y * width) + x);
 				if (dot > 0) {
 					uint8_t x_position = x_st + x;
 					uint8_t y_position = y_st + y;

@@ -47,7 +47,7 @@ void drv_OLED_Display_DrawPixel(uint8_t x, uint8_t y, uint16_t color);
 
 void drv_OLED_Display_DrawPictire(uint8_t x_st,  uint8_t y_st,
 		                          uint8_t width, uint8_t heigh,
-								  uint8_t *ptrPicture, uint16_t color);
+								  uint16_t *ptrPicture, uint16_t color);
 
 
 void  drv_OLED_Display_DrawImage(uint8_t x_st,  uint8_t y_st,
